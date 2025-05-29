@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GAT — Login</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #000;
+      color: #fff;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: linear-gradient(to top, #005cbf, #fcd116);
+      top: 0;
+      left: 0;
+    }
+
+    .mascot {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 120px;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    .form-container {
+      max-width: 400px;
+      margin: 100px auto;
+      padding: 30px;
+      background-color: rgba(255, 255, 255, 0.95);
+      color: #000;
+      border-radius: 20px;
+      box-shadow: 4px 6px 15px rgba(0,0,0,0.5);
+      text-align: center;
+    }
+
+    .form-container h2 {
+      margin-bottom: 20px;
+      color: #005cbf;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+      text-align: left;
+      position: relative;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .form-group input[type="email"],
+    .form-group input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+    }
+
+    .form-group input[type="checkbox"] {
+      margin-right: 10px;
+    }
+
+    .toggle-eye {
+      position: absolute;
+      top: 33px;
+      right: 12px;
+      background: none;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .btn {
+      background-color: #ffd700;
+      color: #000;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 25px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #ffc107;
+      transform: scale(1.05);
+    }
+
+    .register-link {
+      margin-top: 15px;
+      display: block;
+      color: #005cbf;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .register-link:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 500px) {
+      .form-container {
+        margin: 80px 20px;
+        padding: 20px;
+      }
+      .mascot {
+        width: 80px;
+        top: 5px;
+        right: 5px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- Mascot -->
+<img class="mascot" src="https://i.postimg.cc/65rFHjrK/Imagem-do-Whats-App-de-2025-05-16-s-18-23-33-d6f8b01a-removebg-preview.png" alt="GAT Mascot">
+
+<div id="particles-js"></div>
+
+<div class="form-container">
+  <h2>Login to GAT</h2>
+  <form onsubmit="handleLogin(event)">
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" required />
+    </div>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" id="password" required />
+      <button type="button" class="toggle-eye" onclick="togglePassword()">👁️</button>
+    </div>
+    <div class="form-group">
+      <label><input type="checkbox" id="robot" required /> I'm not a robot</label>
+    </div>
+    <button type="submit" class="btn">Log in</button>
+    <a class="register-link" href="cadastro.html">Create an account</a>
+  </form>
+</div>
+
+<script>
+  function togglePassword() {
+    const input = document.getElementById("password");
+    input.type = input.type === "password" ? "text" : "password";
+  }
+
+  function handleLogin(event) {
+    event.preventDefault();
+    const email = document.getElementById("email").value;
+
+    // Save email to localStorage
+    localStorage.setItem("email", email);
+
+    // Redirect to main page
+    window.location.href = "index.html";
+  }
+
+  particlesJS("particles-js", {
+    "particles": {
+      "number": { "value": 80 },
+      "color": { "value": "#ffffff" },
+      "shape": { "type": "circle" },
+      "opacity": { "value": 0.5 },
+      "size": { "value": 3 },
+      "line_linked": {
+        "enable": true,
+        "distance": 150,
+        "color": "#ffffff",
+        "opacity": 0.4,
+        "width": 1
+      },
+      "move": {
+        "enable": true,
+        "speed": 2
+      }
+    }
+  });
+</script>
+
+</body>
+</html>
